@@ -6,10 +6,10 @@ read file_name
 shift
 echo "you describe you file: "
 read -e describe
-if [ $ans = 'a' ]
+if [ "$ans" = 'a' ]
 then
  git add $file_name
-elif [ $ans = "r" ]
+elif [ "$ans" = "r" ]
 then
  git rm $file_name
 fi
