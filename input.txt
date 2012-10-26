@@ -1,0 +1,27 @@
+4 6
+16 23
+0 1  Nguyen Tri Phuong
+0 2  Ly Thai To
+0 3  Thanh  tHAI
+0 4   3 THANG   2
+0 5 3 thang   2
+1 2   NGO giA tu
+1 7 NGUyen  CHI thanh
+1 8   nguyen CHI THANH
+2 9 Ly Thai To
+3 6  LU  GIA
+3 12  lu gia
+4 12 cach  MANG      thANG 8
+4 13  CACH mang thang     8
+5 6 ly  thuong   kiet
+5 7 LY THUONG KIET
+7 11 Ly    thuonG kieT
+8 9 HUNG     VUONG
+9 10  NGUYEN van Cu
+9 15 nguyen thi    minh KHAI
+10 11   An DUONG       vuong
+10 14 nguyen van cu
+13 15  CACH mang thang     8
+14 15  TRAN     HUng DaO
+
+
