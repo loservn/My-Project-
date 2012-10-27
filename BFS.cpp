@@ -1,7 +1,6 @@
 #include "fstream"
 #include <cstring>
 #include <queue>
-#include <malloc.h>
 
 using namespace std;
 #define Max 100
