@@ -35,7 +35,7 @@ bool inputGraph(MyGraph &g)
 	fscanf(f,"%d %d %d %d", &g.Start, &g.Goal, &g.n, &g.m);
 	for(int i = 0;i < g.m ;i++)
 	{
-	    fscanf(f,"%d %d %[^\t\n\r\v\f]s", &g.Arr[i].num1, &g.Arr[i].num2, &g.Arr[i].name);
+	    fscanf(f,"%d %d %[^\n\r]s", &g.Arr[i].num1, &g.Arr[i].num2, &g.Arr[i].name);
 	}
 	fclose(f);
 	
