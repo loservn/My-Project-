@@ -763,7 +763,7 @@ const UserMenuButton = new Lang.Class({
         this.menu.addMenuItem(item);
         this._logoutItem = item;
 
-        item = new PopupMenu.PopupMenuItem(_("Lock"));
+        item = new PopupMenu.PopupMenuItem(_("Lock Screeen"));
         item.connect('activate', Lang.bind(this, this._onLockScreenActivate));
         this.menu.addMenuItem(item);
         this._lockScreenItem = item;
