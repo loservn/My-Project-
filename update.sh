@@ -1,6 +1,10 @@
 #!/bin/bash
 pacman -Syu
-while [[ $(pacman -Qdtq) ]]
-do
-	pacman -R $(pacman -Qdtq)
-done
+if [[ $(pacman -Qdtq) ]] ; then
+	
+	while [[ $(pacman -Qdtq) ]]
+	do
+		pacman -R $(pacman -Qdtq)
+	done
+else echo "Nothing to remove"
+fi
