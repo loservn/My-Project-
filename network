@@ -1,0 +1,47 @@
+#!/bin/sh
+editor=nano
+eth_dhcp=/etc/network.d/ethernet-dhcp
+eth_static=/etc/network.d/ethernet-static
+eth_iproute=/etc/network.d/ethernet-iproute
+wifi_open=/etc/network.d/wireless-open
+wifi_wep=/etc/network.d/wireless-wep
+wifi_wep_string=/etc/network.d/wireless-wep-string-key
+wifi_wpa=/etc/network.d/wireless-wpa
+wifi_wpa_configsection=/etc/network.d/wireless-wpa-configsection
+wifi_wpa_static=/etc/network.d/wireless-wpa-static
+
+while true
+do
+dialog --clear --backtitle "Network configure" \
+	--title "Menu network"\
+	--menu "You can use UP/DOWN arrow keys to choose"\n\
+	15 50 4 \
+	Ethernet-dhcp "Ethernet via dhcp" \
+	Ethernet-static "Ethernet via static" \
+	Ethernet-iproute "Ethernet via iproute"\
+	Wireless-open "Wireless with no password"\
+	Wireless-wep "Wireless with wep encrypted [0-9]"\
+	Wireless-wep-string "Wireless with string password"\
+	Wireless-wpa "Wpa support"\
+	Wireless-wpa-configsection "More complex config wpa"\
+	Wireless-wpa-static "Static wpa"\
+        Exit "Exit the configure" 2> choice
+menu=$(<choice)
+
+case $menu in
+	Ethernet-dhcp) $editor $eth_dhcp ;;
+	Ethernet-static) $edito $eth_static;;
+	Ethernet-iproute) $editor $eth_iproute ;;
+	Wireless-open) $editor $wifi_open;;
+	Wireless-wep) $editor $wifi_wep;;
+	Wireless-wep-string) $editor $wifi_wep_string;;
+	Wireless-wpa) $editor $wifi_wpa;;
+	Wireless-wpa-configsection) $editor $wifi_wpa_configsection;;
+	Wireless-wpa-static) $editor $wifi_wpa_static;;
+	Exit) echo "Bye";break;;
+esac
+done
+
+rm choice
+systemctl enable net-auto-wired && systemctl start net-auto-wired
+systemctl enable net-auto-wireless && systemctl start net-auto-wireless
