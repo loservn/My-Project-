@@ -32,7 +32,10 @@ dialog --title "Copy file" --gauge "Copying file..." 10 75 < <(
    for f in "${DIRS[@]}"
    do
       # calculate progress
+      /bin/cp $f ${DEST} &>/dev/null
+      if [ $? -eq 0 ] ; then
       PCT=$(( 100*(++i)/n ))
+      fi
  
       # update dialog box 
 cat <<EOF
@@ -42,7 +45,7 @@ Copying file "$f"...
 XXX
 EOF
   # copy file $f to $DEST 
-  /bin/cp $f ${DEST} &>/dev/null
+  
    done
 )
 
