@@ -6,6 +6,7 @@ while [[ 1 ]]
 	enlightenment_remote -desktop-lock
 	xset dpms force off	
 	continue	
-	fi 
+	fi
+       sleep 30	
 done
 
