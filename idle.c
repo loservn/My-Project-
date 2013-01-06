@@ -22,6 +22,7 @@ if (XScreenSaverQueryExtension(display, &event_base, &error_base)) {
 XScreenSaverQueryInfo(display, DefaultRootWindow(display), &info);
 
 seconds = info.idle/1000;
+XCloseDisplay(display);
 //printf("%d",seconds);
 return 0;
 }
