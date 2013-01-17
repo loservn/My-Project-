@@ -7,6 +7,7 @@ name=$(ps -eo pmem,pid,cmd | sort -n -r | head -1 | awk '{printf("%s",$3)}')
 while [[ 1 ]]
 do
 	if [ $mem_used -gt 80 ] ; then
+		echo "$name is killed due to ram usage" >> ~/monitor.log
 		kill $pid
 	        $name &
 	fi
