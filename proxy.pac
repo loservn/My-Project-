@@ -6,10 +6,10 @@ function FindProxyForURL(url, host) {
     //
     var proxylist = new Array(
         "*.uit.edu.vn",
-        "forum.uit.edu.vn",
+        //"forum.uit.edu.vn",
         "www.cyberciti.biz",
         "mail.google.com",
-        "www.pandora.com",
+        //"www.pandora.com",
         "www.google.com",
 	"www.google.com.vn"
 	"www.hvaonline.net"
