@@ -22,7 +22,6 @@ xf86-input-mouse
 xf86-input-vmmouse
 xorg-fonts-75dpi
 xorg-fonts-100dpi
-virtualbox-guest-utils
 ttf-dejavu
 ttf-bitstream-vera
 ttf-liberation
