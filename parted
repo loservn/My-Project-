@@ -1,0 +1,52 @@
+#!/bin/bash
+#[[ $EUID != 0 ]] && echo "You must run as root !" && exit 1
+
+echo "This's script maybe erase your data. Please backup your data before using it !"
+
+echo "Enter your device: "
+read -t 30  dev_
+
+echo "Are you sure to use device: $dev_ ? [y/n]"
+read ans
+if [ $ans = "n" ] ; then
+	echo "aborted installation"
+	exit 1
+fi
+
+#dd image to device
+echo "Please enter path to iso file of installation"
+read path
+
+echo "installation's running."
+
+#dd if=/dev/zero of=$dev_ || echo "Device's not found" && exit 1
+dd if=$path of=$dev_ bs=4M || echo "Device or file's not found"
+
+# make persistent and data partition
+echo "Making partions"
+
+echo -e "n \np \n2 \n \n+200M \nn \np \n3 \n \n \nwq" > part
+fdisk $dev_ < part
+rm part
+
+# make filesystem and label of persistent
+
+mkfs.ext2 ${dev_}2
+e2label ${dev_}2 Persistent
+
+mkfs.ext3 ${dev_}3
+e2label ${dev_}3 DATA
+
+echo "Making encrypted partition"
+# make encrypt partitions
+
+cryptsetup --cipher aes-xts-plain64 --key-size 512 --hash sha512 --iter-time 50000 --use-random --verify-passphrase luksFormat ${dev_}3
+
+cryptsetup luksOpen ${dev_}3 data
+
+mkfs.ext3 /dev/mapper/data
+
+cryptsetup luksClose data
+
+echo "Finished ! You can reboot and enjoy"
+
