@@ -25,5 +25,12 @@ xorg-fonts-100dpi
 virtualbox-guest-utils
 ttf-dejavu
 ttf-bitstream-vera
+ttf-liberation
+ttf-freefont
 gnome-terminal
-gummiboot-efi
+nautilus
+gedit
+abiword
+abiword-plugins
+firefox
+pkgfile
